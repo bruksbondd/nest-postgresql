@@ -8,6 +8,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 
 @Module({
   imports: [ConfigModule.forRoot({
+   
     isGlobal: true,
     load: [configurations]
   }), SequelizeModule.forRootAsync({
