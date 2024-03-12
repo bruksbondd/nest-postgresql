@@ -14,9 +14,9 @@ export class AuthUserResponse {
     @IsString()
     email: string
     
-    @ApiProperty()
-    @IsString()
-    password: string
+    // @ApiProperty()
+    // @IsString()
+    // password: string
 
     @ApiProperty()
     @IsString()

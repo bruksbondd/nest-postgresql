@@ -32,6 +32,13 @@ export class UsersService {
     return dto;
   }
 
+  async publicUser(email: string) {
+    return this.userRepository.findOne({
+      where: { email },
+      attributes: { exclude: ['password'] },
+    });
+  }
+
   async getUsers() {
     try {
       const users = await this.userRepository.findAll({});
