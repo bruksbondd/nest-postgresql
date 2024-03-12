@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 //import { users } from '../../moks';
 import { InjectModel } from '@nestjs/sequelize';
 import { User } from './models/user.model';
@@ -15,6 +15,12 @@ export class UsersService {
     return bcrypt.hash(password, 10);
   }
 
+  async findUserByEmail(email: string) {
+    return this.userRepository.findOne({
+      where: { email },
+    });
+  }
+
   async createUser(dto: CreateUserDTO): Promise<CreateUserDTO> {
     dto.password = await this.hashPassword(dto.password);
     await this.userRepository.create({
@@ -28,14 +34,10 @@ export class UsersService {
 
   async getUsers() {
     try {
-        const users = await this.userRepository.findAll({
-
-        })
-        return {users}
-    } catch(e) {
-        throw new Error(e)
+      const users = await this.userRepository.findAll({});
+      return { users };
+    } catch (e) {
+      throw new Error(e);
     }
-
-    
   }
 }
