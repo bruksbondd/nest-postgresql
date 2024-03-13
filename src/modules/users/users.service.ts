@@ -38,9 +38,9 @@ export class UsersService {
     return dto
   }
 
-  async deleteUser(email: string): Promise<number> {
+  async deleteUser(email: string): Promise<boolean> {
     const user = await this.findUserByEmail(email)
-    return await this.userRepository.destroy({where: {email}}).then((u) => { return user.id });
+    return await this.userRepository.destroy({where: {email}}).then((u) => { return true });
   }
 
 
