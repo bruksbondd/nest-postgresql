@@ -26,7 +26,7 @@ export class UsersController {
   @ApiResponse({status: 200, type: DeleteUserDTO})
   @UseGuards(JwtAuthGuard)
   @Delete('delete-user')
-  deleteUser(@Req() request) {
+  deleteUser(@Req() request): Promise<boolean> {
     const {email} = request.user
     return this.usersService.deleteUser(email);
   }
