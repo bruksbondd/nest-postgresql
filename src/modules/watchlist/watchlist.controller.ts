@@ -26,14 +26,27 @@ export class WatchlistController {
     return this.watchlistService.createAsset(user, assetDto);
   }
 
+  @ApiTags('API')
+  @UseGuards(JwtAuthGuard)
   @Get('get-all')
-  getAllAsets() {}
+  getAllAsets(@Req() request): Promise<WatchlistDTO[]> {
+    const {id} = request.user;
+    return this.watchlistService.getAllAssets(id);
+  }
 
+  @ApiTags('API')
+  @UseGuards(JwtAuthGuard)
   @Patch('update')
-  updateAsset() {}
+  updateAsset(@Body() assetDto: WatchlistDTO, @Req() request): Promise<WatchlistDTO> {
+    const {id} = request.user;
+    return this.watchlistService.updateAsset(id, assetDto);
+  }
 
+  @ApiTags('API')
+  @UseGuards(JwtAuthGuard)
   @Delete()
-  deleteAsset(@Query('id') id: string) {
-    return;
+  deleteAsset(@Query('id') assetId: string, @Req() request): Promise<boolean> {
+    const {id} = request.user;
+    return this.watchlistService.deleteAsset(id, assetId)
   }
 }
