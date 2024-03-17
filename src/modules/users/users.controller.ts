@@ -8,6 +8,8 @@ import { ApiResponse, ApiTags } from '@nestjs/swagger';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
+  @ApiTags('API')
+  @ApiResponse({status: 200, type: CreateUserDTO})
   @Post('create-user')
   createUsers(@Body() dto: CreateUserDTO) {
     return this.usersService.createUser(dto);
@@ -31,6 +33,8 @@ export class UsersController {
     return this.usersService.deleteUser(email);
   }
 
+  @ApiTags('API')
+  @ApiResponse({status: 200, type: CreateUserDTO})
   @Get('get-users')
   getUsers() {
     return this.usersService.getUsers();
