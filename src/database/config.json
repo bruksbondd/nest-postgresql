@@ -1,0 +1,26 @@
+{
+   "development": {
+     "username": "root",
+     "password": "root",
+     "database": "root",
+     "host": "localhost",
+     "port": "5432",
+     "dialect": "root"
+   },
+   "test": {
+      "username": "root",
+     "password": "root",
+     "database": "root",
+     "host": "localhost",
+     "port": "5432",
+     "dialect": "root"
+   },
+   "production": {
+      "username": "root",
+      "password": "root",
+      "database": "root",
+      "host": "localhost",
+      "port": "5432",
+      "dialect": "root"
+   }
+ }
